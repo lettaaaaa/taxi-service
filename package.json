@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "express": "^5.2.1",
+    "multer": "^2.1.1",
+    "mysql2": "^3.19.1",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.0.2",
+    "swagger-ui-express": "^5.0.1",
+    "tsyringe": "^4.10.0",
+    "typeorm": "^0.3.6"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "generate-csv": "ts-node src/utils/CsvGenerator.ts",
+    "import-data": "ts-node src/index.ts",
+    "dev": "ts-node src/index.ts",
+    "clean": "powershell -Command \"if (Test-Path database.sqlite) { Remove-Item database.sqlite }; if (Test-Path data/*.csv) { Remove-Item data/*.csv }; if (Test-Path uploads) { Remove-Item -Recurse -Force uploads; New-Item -ItemType Directory uploads }\"",
+    "full-run": "npm run clean && npm run generate-csv && npm run dev"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.1.0",
+    "@types/swagger-ui-express": "^4.1.8",
+    "rimraf": "^6.1.3"
+  }
+}
